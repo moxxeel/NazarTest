@@ -24,7 +24,7 @@ const index = () => {
             const result = await database.getAllAsync<{
             id: number;
             name: string;
-            }>("SELECT * FROM employee");
+            }>("SELECT * FROM employee order by name asc");
             setFlatListItems(result);
         } catch (error) {
             console.log('Error'+ error);

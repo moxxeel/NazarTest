@@ -21,7 +21,6 @@ const view = () => {
         }, [])
     );
 
-
     const loadData = async () => {
         try {
             const result = await database.getAllAsync<{
@@ -35,7 +34,7 @@ const view = () => {
         }
     };
 
-    // Función para tomar una foto con la cámara
+    
     const takePhoto = async () => {
         try {
             const { status } = await ImagePicker.requestCameraPermissionsAsync();
@@ -49,7 +48,6 @@ const view = () => {
                 if (!result.canceled) {
                     const uri = result.assets[0].uri;
                     const filename = GetFileName()
-                    //setImageUri(uri);
                     console.log("url: " + uri)
                     await database.execAsync(
                         `
