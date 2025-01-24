@@ -19,7 +19,7 @@ export default function Layout() {
             const response = await db.execAsync("CREATE TABLE IF NOT EXISTS employee (id INTEGER PRIMARY KEY AUTOINCREMENT, name Text);");
             console.log("Database created", response);
 
-            await db.execAsync("CREATE TABLE IF NOT EXISTS file (id INTEGER PRIMARY KEY AUTOINCREMENT, name Text, imageUri TEXT, fk_employee INTEGER NOT NULL, FOREIGN KEY (fk_employee) REFERENCES employee(id) ON DELETE CASCADE);");
+            await db.execAsync("CREATE TABLE IF NOT EXISTS file (id INTEGER PRIMARY KEY AUTOINCREMENT, name Text, imageUri Text, fk_employee INTEGER NOT NULL);");
 
             //Verificar si empleados iniciales están creados
             await db.withTransactionAsync(async () => {
