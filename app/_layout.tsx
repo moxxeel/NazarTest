@@ -75,7 +75,16 @@ export default function Layout() {
                 />
                 <Stack.Screen
                     name="employee/view"
-                    options={{ title: "Empleado" }}
+                    options={{
+                        title: "Empleado",
+                        headerRight: () => (
+                            <Image
+                                source={require('../assets/images/logo.png')}
+                                style={{ height: 30, width: 50 }}
+                                resizeMode="contain"
+                            />
+                        ),
+                    }}
                 />
 
             </Stack>
