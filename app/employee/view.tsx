@@ -1,14 +1,32 @@
-import { useLocalSearchParams } from 'expo-router'
-import React from 'react'
+import { useFocusEffect, useLocalSearchParams } from 'expo-router'
+import { useSQLiteContext } from 'expo-sqlite'
+import React, { useCallback } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native"
 
 const view = () => {
 
     const params = useLocalSearchParams()
 
-    const lista = [
+    const [flatListItems, setFlatListItems] = React.useState<
+        { id: number; name: string;}[]
+    >([]);
 
-    ];
+    const database = useSQLiteContext();
+    useFocusEffect(
+        useCallback(() => {
+            loadData();
+        }, [])
+    );
+
+    const loadData = async () => {
+        const result = await database.getAllAsync<{
+          id: number;
+          name: string;
+        }>(`SELECT * FROM file where fk_employee=${params.id}`);
+        setFlatListItems(result);
+      };
+
+      
 
     return (
         <View style={{ flex: 1, flexDirection: 'column', backgroundColor: '#F2F2F2' }}>
@@ -30,7 +48,7 @@ const view = () => {
             </View>
             <View style={{ height: '95%', flexDirection: 'column', backgroundColor: '#FFFFFF', margin: 10, borderRadius: 10, marginTop: 0 }}>
                 <Text style={{ fontWeight: '500', marginStart: 10, marginTop: 10, fontSize: 12 }}>Total: 0</Text>
-                {lista.length == 0 ? (
+                {flatListItems.length == 0 ? (
                     <Text style={styles.emptyText}>No hay elementos para mostrar</Text>
                 ) : (
                     <Text style={styles.emptyText}>Si hay elementos para mostrar</Text>
