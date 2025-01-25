@@ -19,7 +19,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.moxxeel.NazarTest"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -34,16 +35,24 @@
           "enableFTS": true,
           "useSQLCipher": true,
           "android": {
-            // Override the shared configuration for Android
             "enableFTS": false,
             "useSQLCipher": false
           },
           "ios": {
-            // You can also override the shared configurations for iOS
-            "customBuildFlags": ["-DSQLITE_ENABLE_DBSTAT_VTAB=1 -DSQLITE_ENABLE_SNAPSHOT=1"]
+            "customBuildFlags": [
+              "-DSQLITE_ENABLE_DBSTAT_VTAB=1 -DSQLITE_ENABLE_SNAPSHOT=1"
+            ]
           }
         }
       ]
-    ]
+    ],
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "ab0ab620-839b-4d20-9880-311563d1c3c6"
+      }
+    }
   }
 }

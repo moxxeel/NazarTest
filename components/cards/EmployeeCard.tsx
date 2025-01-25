@@ -13,7 +13,7 @@ const EmployeeCard = ({ id, name }) => {
                 {name}
             </Text>
 
-            <TouchableOpacity style={styles.button} onPress={() => router.push(`/employee/view?id=${id}`)}>
+            <TouchableOpacity style={styles.button} onPress={() => router.push(`/employee/view?id=${id}&name=${name}`)}>
                 <Image source={require('../../assets/images/hand.png')} style={styles.icon}/>
             </TouchableOpacity>
 

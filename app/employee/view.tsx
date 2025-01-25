@@ -78,7 +78,7 @@ const view = () => {
                         Archivos
                     </Text>
                     <Text style={{ fontSize: 12, fontWeight: '600', marginStart: 15 }} >
-                        Juan Perez
+                        {params.name}
                     </Text>
                 </View>
 
