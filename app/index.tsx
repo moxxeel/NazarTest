@@ -15,7 +15,7 @@ const index = () => {
     const database = useSQLiteContext();
     useFocusEffect(
         useCallback(() => {
-            loadData(); // Fetch data when the screen is focused
+            loadData();
         }, [])
     );
 
